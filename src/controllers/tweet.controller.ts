@@ -10,12 +10,12 @@ export const store = async (
   next: NextFunction
 ): Promise<any> => {
   try {
-    const { tweet, tweetId } = req.body;
+    const { tweet, userId } = req.body;
     const { userName } = req.body;
     const user = await User.create({ userName }).save();
     const tweets = await Tweet.create({
       tweet,
-      tweetId: user.id,
+      userId: user.id,
     }).save();
     return res.status(201).json({
       message: "created tweet succesfully",
@@ -72,13 +72,13 @@ export const update = async (
   next: NextFunction
 ): Promise<any> => {
   try {
-    const { tweet, tweetId } = req.body;
+    const { tweet, userId } = req.body;
     const { userName } = req.body;
 
     const { id } = req.params;
     const user = await User.create({ userName });
 
-    const tweets = await Tweet.update(Number(id), { tweet, tweetId: user.id });
+    const tweets = await Tweet.update(Number(id), { tweet, userId: user.id });
 
     if (!tweets) {
       throw new Error("tweet not found");

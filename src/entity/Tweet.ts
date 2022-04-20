@@ -19,7 +19,7 @@ export class Tweet extends BaseEntity {
   tweet: string;
 
   @Column({ nullable: true })
-  tweetId: number;
+  userId: number;
 
   @CreateDateColumn({ name: "created_at", type: "timestamp", default: "now()" })
   createdAt: Date;
@@ -44,6 +44,6 @@ export class Tweet extends BaseEntity {
     eager: true,
     onDelete: "CASCADE",
   })
-  @JoinColumn({ name: "tweetId" })
+  @JoinColumn({ name: "userId" })
   user: User;
 }

@@ -4,14 +4,10 @@ import { User } from "../../entity/User";
 
 define(User, (faker: typeof Faker) => {
   const gender = faker.random.uuid();
-  const firstName = faker.name.firstName(gender);
-  const lastName = faker.name.lastName(gender);
-  const age = faker.random.number({ min: 10, max: 30 });
+  const userName = faker.name.firstName(gender);
 
   const user = new User();
-  user.firstName = firstName;
-  user.lastName = lastName;
-  user.age = age;
+  user.userName = userName;
 
   return user;
 });
