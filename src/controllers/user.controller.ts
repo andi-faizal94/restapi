@@ -30,7 +30,7 @@ export const index = async (
   next: NextFunction
 ): Promise<any> => {
   try {
-    const user = await User.find();
+    const user = await User.find({ relations: ["tweets"] });
 
     return res.status(200).json({
       message: "get user succesfully",
