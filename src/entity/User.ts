@@ -12,10 +12,10 @@ import { Tweet } from "./Tweet";
 
 @Entity()
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({type:"int"})
   id: number;
 
-  @Column({ nullable: true })
+  @Column({ type:"varchar", nullable: true })
   userName: string;
 
   @CreateDateColumn({ name: "created_at", type: "timestamp", default: "now()" })

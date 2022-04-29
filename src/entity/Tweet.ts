@@ -12,14 +12,11 @@ import {
 import { User } from "./User";
 @Entity()
 export class Tweet extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({type:"int"})
   id: number;
 
-  @Column({ nullable: true })
+  @Column({ type:"text" ,nullable: true })
   tweet: string;
-
-  @Column({ nullable: true })
-  userId: number;
 
   @CreateDateColumn({ name: "created_at", type: "timestamp", default: "now()" })
   createdAt: Date;
@@ -44,6 +41,6 @@ export class Tweet extends BaseEntity {
     eager: true,
     onDelete: "CASCADE",
   })
-  @JoinColumn({ name: "userId" })
+  @JoinColumn({ name: "user_id" })
   user: User;
 }
